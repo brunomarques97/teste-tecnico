@@ -59,5 +59,31 @@ function pertenceFibonacci(numero) {
      
     })
     .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
-  
 
+     
+    //exercicio 4
+  
+    const faturamento = {
+      SP: 67836.43,
+      RJ: 36678.66,
+      MG: 29229.88,
+      ES: 27165.48,
+      Outros: 19849.53
+  };
+  
+  const faturamentoTotal = Object.values(faturamento).reduce((total, valor) => total + valor, 0);
+  
+  function calcularPercentual(faturamentoEstado, faturamentoTotal) {
+      return (faturamentoEstado / faturamentoTotal) * 100;
+  }
+
+  const listaFaturamento = document.getElementById('exercicio4');
+  
+  for (const estado in faturamento) {
+    const percentual = calcularPercentual(faturamento[estado], faturamentoTotal).toFixed(2);
+    const listItem = document.createElement('li');
+    listItem.textContent = `${estado}: ${percentual}%`;
+    listaFaturamento.appendChild(listItem);
+}
+
+//exercicio 5
