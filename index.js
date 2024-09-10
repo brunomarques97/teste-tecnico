@@ -87,3 +87,16 @@ function pertenceFibonacci(numero) {
 }
 
 //exercicio 5
+
+function inverterString() {
+
+  const str = document.getElementById('inputString').value;
+  let stringInvertida = '';
+  
+  for (let i = str.length - 1; i >= 0; i--) {
+      stringInvertida += str[i];
+  }
+  
+  // Exibe o resultado no HTML
+  document.getElementById('exercicio5').textContent = stringInvertida;
+}
