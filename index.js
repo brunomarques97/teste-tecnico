@@ -35,5 +35,29 @@ function pertenceFibonacci(numero) {
   
     return false; 
   }
+
+  //exercicio 3
+
+  fetch('dados.json')
+    .then(response => response.json())
+    .then(faturamento_diario => {
+        const faturamento = faturamento_diario
+            .filter(dia => dia.valor > 0) 
+            .map(dia => dia.valor);
+
+        const menorFaturamento = Math.min(...faturamento);
+        const maiorFaturamento = Math.max(...faturamento);
+
+        const somaFaturamento = faturamento.reduce((acc, valor) => acc + valor, 0);
+        const mediaFaturamento = somaFaturamento / faturamento.length;
+
+        const diasAcimaDaMedia = faturamento.filter(valor => valor > mediaFaturamento).length;
+
+        document.getElementById('menorFaturamento').textContent = "Menor valor de faturamento: " + menorFaturamento;
+        document.getElementById('maiorFaturamento').textContent = "Maior valor de faturamento: " + maiorFaturamento;
+        document.getElementById('diasAcimaDaMedia').textContent = "Dias com faturamento acima da média: " + diasAcimaDaMedia;
+     
+    })
+    .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
   
 
